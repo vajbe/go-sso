@@ -5,10 +5,10 @@ import (
 	"os"
 )
 
-var Conf types.Config
+var conf types.Config
 
 func init() {
-	Conf = types.Config{
+	conf = types.Config{
 		Port:        getEnv("USER_SERVICE_PORT", "8080"),
 		Db_User:     getEnv("USER_SERVICE_DB_USER", "admin"),
 		Db_Pwd:      getEnv("USER_SERVICE_DB_PWD", "admin"),
@@ -21,7 +21,7 @@ func init() {
 }
 
 func GetConfig() types.Config {
-	return Conf
+	return conf
 }
 
 func getEnv(key, defaultVal string) string {

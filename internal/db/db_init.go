@@ -3,6 +3,7 @@ package db
 import (
 	"context"
 	"fmt"
+	c "go-sso/internal/config"
 	"go-sso/internal/types"
 
 	"log"
@@ -14,7 +15,7 @@ import (
 var dbPool *pgxpool.Pool
 
 func InitializeDb() {
-	var cfg types.Config
+	cfg := c.GetConfig()
 	connString := "postgres://" + cfg.Db_User + ":" + cfg.Db_Pwd + "@" + cfg.Db_URL + ":" + cfg.Db_Port + "/admin?sslmode=disable"
 	var err error
 	ctx := context.Background()
