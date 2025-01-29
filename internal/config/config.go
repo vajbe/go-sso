@@ -15,7 +15,7 @@ func init() {
 		Db_Port:     getEnv("USER_SERVICE_DB_PORT", "5432"),
 		Db_URL:      getEnv("USER_SERVICE_DB_HOST", "localhost"),
 		Redis_URL:   getEnv("USER_SERVICE_REDIS_URL", "localhost:6379"),
-		Schema_Path: getEnv("USER_SERVICE_SCHEMA_PATH", "C:\\Users\\vivek\\Documents\\go-microservices\\services\\users\\db\\schema.sql"),
+		Schema_Path: getEnv("USER_SERVICE_SCHEMA_PATH", "C:\\Users\\vivek\\Documents\\go-sso\\internal\\db\\schema.sql"),
 		Kafka_URL:   getEnv("USER_SERVICE_KAFKA_URL", "localhost:9092"),
 	}
 }

@@ -18,6 +18,7 @@ func InitializeDb() {
 	cfg := c.GetConfig()
 	connString := "postgres://" + cfg.Db_User + ":" + cfg.Db_Pwd + "@" + cfg.Db_URL + ":" + cfg.Db_Port + "/admin?sslmode=disable"
 	var err error
+	fmt.Printf("%s", connString)
 	ctx := context.Background()
 	dbPool, err = pgxpool.New(ctx, connString)
 

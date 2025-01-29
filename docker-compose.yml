@@ -1,0 +1,23 @@
+version: "3.8"
+services:
+  postgres:
+    image: postgres:15
+    container_name: postgres-db-sso
+    ports:
+      - "5432:5432"
+    environment:
+      POSTGRES_USER: admin
+      POSTGRES_PASSWORD: admin
+      POSTGRES_DB: admin
+    volumes:
+      - ./pg_data_sso:/var/lib/postgresql/data
+      - ./pg_hba.conf:/etc/postgresql/conf.d/pg_hba.conf
+    command: postgres -c "hba_file=/etc/postgresql/conf.d/pg_hba.conf"
+    networks:
+      - app-network
+networks:
+  app-network:
+    driver: bridge
+
+volumes:
+  pg_data_sso:
