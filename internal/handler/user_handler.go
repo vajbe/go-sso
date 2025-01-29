@@ -1,7 +1,10 @@
 package handler
 
 import (
-	"log"
+	"encoding/json"
+	"go-sso/internal/db"
+	res "go-sso/internal/middleware"
+	"go-sso/internal/types"
 	"net/http"
 )
 
@@ -12,7 +15,18 @@ func NewUserHandler() *UserHandler {
 }
 
 func (h *UserHandler) AddUser(w http.ResponseWriter, r *http.Request) {
-	log.Print("In Add user")
+	var newUser types.User
+	err := json.NewDecoder(r.Body).Decode(&newUser)
+	if err != nil {
+		res.Error(w, err.Error(), http.StatusBadRequest)
+		return
+	}
+	resp, err := db.AddUser(newUser)
+	if err != nil {
+		res.Error(w, err.Error(), http.StatusInternalServerError)
+		return
+	}
+	res.Success(w, "User has been added successfully.", resp)
 }
 
 func (h *UserHandler) Login(w http.ResponseWriter, r *http.Request) {
