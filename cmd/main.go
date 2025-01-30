@@ -13,6 +13,7 @@ func main() {
 
 	routes.RegisterUserRoutes(router)
 
+	db.InitRedis()
 	db.InitializeDb()
 
 	http.ListenAndServe(":8080", router)

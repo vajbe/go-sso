@@ -23,3 +23,13 @@ type Config struct {
 	Schema_Path string
 	Kafka_URL   string
 }
+
+type UserLogin struct {
+	Email    string `json:"email" validate:"required,email"`
+	Password string `json:"password" validate:"required"`
+}
+
+type UserLoginResponse struct {
+	Email string `json:"email,omitempty"`
+	Id    string `json:"id,omitempty"`
+}
