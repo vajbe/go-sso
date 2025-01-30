@@ -53,7 +53,7 @@ func Login(user types.UserLogin) (types.UserLoginResponse, error) {
 
 	// Generate Redis key
 	key := fmt.Sprintf("jwt:%s", jwtToken)
-	err = REDIS_CLIENT.Set(context.Background(), key, jwtToken, 10*time.Second).Err()
+	err = REDIS_CLIENT.Set(context.Background(), key, jwtToken, 30*time.Minute).Err()
 	if err != nil {
 		return types.UserLoginResponse{Email: user.Email}, err
 	}
