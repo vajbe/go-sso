@@ -20,8 +20,8 @@ func NewUserHandler() *UserHandler {
 }
 
 var googleOauthConfig = &oauth2.Config{
-	ClientID:     "805673868908-mg6cgpd43qcrorj0b2cm7r8iteknkssv.apps.googleusercontent.com",
-	ClientSecret: "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",
+	ClientID:     "",
+	ClientSecret: "",
 	RedirectURL:  "http://localhost:8080/oauth/callback",
 	Scopes:       []string{"openid", "profile", "email"},
 	Endpoint:     google.Endpoint,
