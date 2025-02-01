@@ -16,7 +16,10 @@ func RegisterUserRoutes(router *mux.Router) {
 		handlerFunc func(http.ResponseWriter, *http.Request)
 	}{
 		{"POST", "/register", userHandler.AddUser},
-		{"POST", "/login", userHandler.Login},
+		{"GET", "/oauth/callback", userHandler.AuthCallbackHandler},
+		{"GET", "/login", userHandler.SSOHandler},
+		/* {"POST", "/login", userHandler.Login}, */
+
 	}
 
 	for _, route := range routes {
