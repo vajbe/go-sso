@@ -20,9 +20,11 @@ func NewUserHandler() *UserHandler {
 }
 
 var googleOauthConfig = &oauth2.Config{
-	RedirectURL: "http://localhost:8080/oauth/callback",
-	Scopes:      []string{"openid", "profile", "email"},
-	Endpoint:    google.Endpoint,
+	ClientID:     " ",
+	ClientSecret: "",
+	RedirectURL:  "http://localhost:8080/oauth/callback",
+	Scopes:       []string{"openid", "profile", "email"},
+	Endpoint:     google.Endpoint,
 }
 
 func (h *UserHandler) AddUser(w http.ResponseWriter, r *http.Request) {
